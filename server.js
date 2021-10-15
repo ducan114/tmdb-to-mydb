@@ -5,6 +5,8 @@ const axios = require('axios');
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 // Search movie by name.
 app.get('/api/v1/search', async (req, res) => {
   const searchTerm = req.query.searchTerm;
@@ -133,4 +135,4 @@ app.get('/api/v1/genres', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Server is listening on port 3000.'));
+app.listen(port, () => console.log('Server is listening on port 3000.'));
