@@ -2,10 +2,13 @@ process.env.NODE_ENV === 'production' || require('dotenv').config();
 
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+app.use(cors());
 
 // Search movie by name.
 app.get('/api/v1/search', async (req, res) => {
