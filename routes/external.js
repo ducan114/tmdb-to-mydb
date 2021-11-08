@@ -14,17 +14,8 @@ router.get('/movie/popular', async (req, res) => {
     const result = await axios.get(
       `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
     );
-    const data = result.data;
-    const processedData = {
-      ...data,
-      results: data.results.map(e => ({
-        title: e.title,
-        id: e.id,
-        poster_path: e.poster_path
-      }))
-    };
 
-    res.json(processedData);
+    res.json(data);
   } catch (err) {
     res.json(err.message);
     console.log(err);
@@ -40,16 +31,8 @@ router.get('/movie/search', async (req, res) => {
     const result = await axios.get(
       `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
     );
-    const data = result.data;
-    const processedData = {
-      ...data,
-      results: data.results.map(e => ({
-        title: e.title,
-        id: e.id,
-        poster_path: e.poster_path
-      }))
-    };
-    res.json(processedData);
+
+    res.json(result.data);
   } catch (err) {
     res.json(err.message);
   }
