@@ -1,0 +1,714 @@
+###
+GET http://localhost:3000/api/v1/external/movie/search?searchTerm=spider-man
+
+###
+GET http://localhost:3000/api/v1/external/movie/315635
+
+###
+GET http://localhost:3000/api/v1/external/actor/1136406
+
+###
+GET  http://localhost:3000/api/v1/movie/search?limit=2&page=3
+
+###
+POST http://localhost:3000/api/v1/movie
+Content-Type: application/json
+
+{
+  "adult": false,
+  "actors": [
+    {
+      "character": "Peter Parker / Spider-Man",
+      "id": 1136406,
+      "name": "Tom Holland",
+      "profile_path": "/ip7aXVH8s6wXv8cY6KI14OZgCI8.jpg"
+    },
+    {
+      "character": "Adrian Toomes / Vulture",
+      "id": 2232,
+      "name": "Michael Keaton",
+      "profile_path": "/baeHNv3qrVsnApuKbZXiJOhqMnw.jpg"
+    },
+    {
+      "character": "Tony Stark / Iron Man",
+      "id": 3223,
+      "name": "Robert Downey Jr.",
+      "profile_path": "/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+    },
+    {
+      "character": "May Parker",
+      "id": 3141,
+      "name": "Marisa Tomei",
+      "profile_path": "/pP0J79KUzPPjW4QO42iF4KKM7C6.jpg"
+    },
+    {
+      "character": "Harold 'Happy' Hogan",
+      "id": 15277,
+      "name": "Jon Favreau",
+      "profile_path": "/8MtRRnEHaBSw8Ztdl8saXiw1egP.jpg"
+    },
+    {
+      "character": "Virginia 'Pepper' Potts",
+      "id": 12052,
+      "name": "Gwyneth Paltrow",
+      "profile_path": "/slPWN0VvYJtNOEuxlFSsXSNQMaF.jpg"
+    },
+    {
+      "character": "Michelle 'MJ' Jones",
+      "id": 505710,
+      "name": "Zendaya",
+      "profile_path": "/r3A7ev7QkjOGocVn3kQrJ0eOouk.jpg"
+    },
+    {
+      "character": "Aaron Davis",
+      "id": 119589,
+      "name": "Donald Glover",
+      "profile_path": "/nilV7NtnML6PDa9VrvxD79F85K9.jpg"
+    },
+    {
+      "character": "Ned",
+      "id": 1649152,
+      "name": "Jacob Batalon",
+      "profile_path": "/53YhaL4xw4Sb1ssoHkeSSBaO29c.jpg"
+    },
+    {
+      "character": "Liz",
+      "id": 1606394,
+      "name": "Laura Harrier",
+      "profile_path": "/udfQvYY4SRthaAfykVZhzlOqnLv.jpg"
+    },
+    {
+      "character": "Eugene 'Flash' Thompson",
+      "id": 1291350,
+      "name": "Tony Revolori",
+      "profile_path": "/ouuo4ulVO9j6T8JixFp4lWTVdtd.jpg"
+    },
+    {
+      "character": "Herman Schultz / Shocker",
+      "id": 71913,
+      "name": "Bokeem Woodbine",
+      "profile_path": "/pnPyA5pJn94zUzuLWTNkGBNZxza.jpg"
+    },
+    {
+      "character": "Anne Marie Hoag",
+      "id": 66221,
+      "name": "Tyne Daly",
+      "profile_path": "/uR0nx2bniih1Kdhst5R3LH59smk.jpg"
+    },
+    {
+      "character": "Abraham",
+      "id": 1421427,
+      "name": "Abraham Attah",
+      "profile_path": "/8r5GdE98NDuj8hMJktXtFWVtxxl.jpg"
+    },
+    {
+      "character": "Coach Wilson",
+      "id": 500427,
+      "name": "Hannibal Buress",
+      "profile_path": "/mcw3Orbg4vbALXTVG4hriZjH1sj.jpg"
+    },
+    {
+      "character": "Principal Morita",
+      "id": 41561,
+      "name": "Kenneth Choi",
+      "profile_path": "/ycHOQV42jsYXoWMaobKTzGXy9g4.jpg"
+    },
+    {
+      "character": "Ms. Warren",
+      "id": 162503,
+      "name": "Selenis Leyva",
+      "profile_path": "/nTiw98CjQt1wKToT1K1jGBcui95.jpg"
+    },
+    {
+      "character": "Betty Brant",
+      "id": 1265629,
+      "name": "Angourie Rice",
+      "profile_path": "/wK1cSK5KYwxBg4fO7h4AHcwhtAh.jpg"
+    },
+    {
+      "character": "Mr. Harrington",
+      "id": 41089,
+      "name": "Martin Starr",
+      "profile_path": "/gNyCdend3C5gY3ucq42Zt3swfg2.jpg"
+    },
+    {
+      "character": "Doris Toomes",
+      "id": 31647,
+      "name": "Garcelle Beauvais",
+      "profile_path": "/bKR6NHtAJUYInnCMdb36YoAWirm.jpg"
+    },
+    {
+      "character": "Phineas Mason / Tinkerer",
+      "id": 87070,
+      "name": "Michael Chernus",
+      "profile_path": "/Df2ZE3P9BiXawPtewinxLPNAu2.jpg"
+    },
+    {
+      "character": "Mac Gargan",
+      "id": 829372,
+      "name": "Michael Mando",
+      "profile_path": "/qLCDUTgbtLdND4HW8aUsDY28gcm.jpg"
+    },
+    {
+      "character": "Jackson Brice / Shocker",
+      "id": 130253,
+      "name": "Logan Marshall-Green",
+      "profile_path": "/oogXh2Osxw43bfjMVCcCH8SGsUB.jpg"
+    },
+    {
+      "character": "Karen (voice)",
+      "id": 6161,
+      "name": "Jennifer Connelly",
+      "profile_path": "/egh1eOHuYgeoqdlLQgaXMl6cPOm.jpg"
+    },
+    {
+      "character": "Agent Foster",
+      "id": 168875,
+      "name": "Gary Weeks",
+      "profile_path": "/n4taftpteF6qUTeYRDkdGPHC58.jpg"
+    },
+    {
+      "character": "Randy",
+      "id": 1173099,
+      "name": "Christopher Berry",
+      "profile_path": "/8y2HybPVLxUabwnMPjdBREbitKZ.jpg"
+    },
+    {
+      "character": "Jason Ionello",
+      "id": 1563266,
+      "name": "Jorge Lendeborg Jr.",
+      "profile_path": "/1633mS58BuM33No4kTPsusePEJa.jpg"
+    },
+    {
+      "character": "Mr. Cobbwell",
+      "id": 94476,
+      "name": "Tunde Adebimpe",
+      "profile_path": "/4PlgqGFsr6ESYKAtB2mySs7L6u.jpg"
+    },
+    {
+      "character": "Cindy",
+      "id": 211937,
+      "name": "Tiffany Espensen",
+      "profile_path": "/srxz35x7Xxe7JxHeHzX0cRNF3ON.jpg"
+    },
+    {
+      "character": "Sally",
+      "id": 1517836,
+      "name": "Isabella Amara",
+      "profile_path": "/hz2uP4Qjucj5my9rLc0FO9aWV2E.jpg"
+    },
+    {
+      "character": "Charles",
+      "id": 1551547,
+      "name": "Michael Barbieri",
+      "profile_path": null
+    },
+    {
+      "character": "Seymour",
+      "id": 1520451,
+      "name": "Josie Totah",
+      "profile_path": "/125iM9BTPVDfRjKGVSqmvgeGsai.jpg"
+    },
+    {
+      "character": "Mr. Delmar",
+      "id": 164208,
+      "name": "Hemky Madera",
+      "profile_path": "/net1kEEpSrr9QC9be6YRhLGuM0k.jpg"
+    },
+    {
+      "character": "Street Vendor",
+      "id": 1838225,
+      "name": "Zach Cherry",
+      "profile_path": "/tBT9Fqb3jUnZ6vcM8LjfoGoB4XY.jpg"
+    },
+    {
+      "character": "Punk on Street",
+      "id": 145446,
+      "name": "Kirk R. Thatcher",
+      "profile_path": "/tC3lxuff2li0h6jks9EM0d53mFw.jpg"
+    },
+    {
+      "character": "Car Jacker",
+      "id": 1842670,
+      "name": "Yu Lew",
+      "profile_path": "/chpfAkStjoMZeUIaK2QArjCpbR3.jpg"
+    },
+    {
+      "character": "Yelling Woman",
+      "id": 171297,
+      "name": "Sondra James",
+      "profile_path": "/y0AuGOeO9qnVEu0oskPS2RrPNK1.jpg"
+    },
+    {
+      "character": "Yelling Man",
+      "id": 1328063,
+      "name": "Bob Adrian",
+      "profile_path": "/tY11cR250ETCYDhLL1a13VV4gM1.jpg"
+    },
+    {
+      "character": "Day Sleeper",
+      "id": 1842673,
+      "name": "Gary Richardson",
+      "profile_path": "/qZnYgEpMMnA2tih2zTa5uj1Fc7.jpg"
+    },
+    {
+      "character": "Gary",
+      "id": 7624,
+      "name": "Stan Lee",
+      "profile_path": "/nGjBAc25C3LT23NqeOfY1pCcax8.jpg"
+    },
+    {
+      "character": "Thai Waiter",
+      "id": 1838226,
+      "name": "Joe Hang",
+      "profile_path": "/5Gf03mE8IC8ZixTrXzkhEpWLAbq.jpg"
+    },
+    {
+      "character": "History Teacher",
+      "id": 31528,
+      "name": "Wayne Pére",
+      "profile_path": "/ppVRC4a061nwAOBerUhg0E9sUDJ.jpg"
+    },
+    {
+      "character": "Steve Rogers / Captain America",
+      "id": 16828,
+      "name": "Chris Evans",
+      "profile_path": "/3bOGNsHlrswhyW79uvIHH1V43JI.jpg"
+    },
+    {
+      "character": "Tent Kid",
+      "id": 1842674,
+      "name": "Alexa Laraki",
+      "profile_path": "/sjEnTFw2CTXEDeaG1d69xcD3W7t.jpg"
+    },
+    {
+      "character": "Tent Kid",
+      "id": 1842675,
+      "name": "Liza Fagin",
+      "profile_path": "/5oCzqacwq0MG8mN4ktASolaVxYp.jpg"
+    },
+    {
+      "character": "F.R.I.D.A.Y. (voice)",
+      "id": 62105,
+      "name": "Kerry Condon",
+      "profile_path": "/9UinfSwMqlgNrpoeppRtQqI6yZG.jpg"
+    },
+    {
+      "character": "Mr. Hapgood",
+      "id": 1842676,
+      "name": "John Penick",
+      "profile_path": "/3k2bw51T88gQV1tvNbRTPi75lUu.jpg"
+    },
+    {
+      "character": "Tiny",
+      "id": 212003,
+      "name": "Ethan Dizon",
+      "profile_path": "/2Zqioe3D9Yb4B8dMUcea6Cy6aoQ.jpg"
+    },
+    {
+      "character": "Decathlon Moderator",
+      "id": 59401,
+      "name": "Amy Hill",
+      "profile_path": "/x5vR2MXZiWGHkppRXlXYj7y7611.jpg"
+    },
+    {
+      "character": "Park Ranger",
+      "id": 1380492,
+      "name": "Miles Mussenden",
+      "profile_path": null
+    },
+    {
+      "character": "Tour Guide",
+      "id": 1572541,
+      "name": "Martha Kelly",
+      "profile_path": "/ac7HoARDIHdYNqpzgJBzpmKHXHR.jpg"
+    },
+    {
+      "character": "Helicopter Pilot",
+      "id": 1779572,
+      "name": "Kevin LaRosa Jr.",
+      "profile_path": "/jFAq7TRkQlPHeiIXNpBcXtxPEwG.jpg"
+    },
+    {
+      "character": "Ferry Kid",
+      "id": 1842677,
+      "name": "Ren Colley",
+      "profile_path": "/kzSBpfFCRJIFDiPkx5BkS8LKfJD.jpg"
+    },
+    {
+      "character": "Ferry Mom",
+      "id": 1077345,
+      "name": "Jennifer Kim",
+      "profile_path": "/2hzOQRZBBQilLBEhElZhU2TImEH.jpg"
+    },
+    {
+      "character": "Ferry Commuter",
+      "id": 1842678,
+      "name": "Ari Groover",
+      "profile_path": "/qTtHDcx0ne7gs1FdNPlXlGRWnf8.jpg"
+    },
+    {
+      "character": "Ferry Commuter",
+      "id": 1842679,
+      "name": "Louis Gonzalez",
+      "profile_path": null
+    },
+    {
+      "character": "Ferry Commuter",
+      "id": 1719599,
+      "name": "Stewart Steinberg",
+      "profile_path": "/muyY09op8PdYdn5FcPdZUouhji8.jpg"
+    },
+    {
+      "character": "Ferry Commuter",
+      "id": 1216011,
+      "name": "Andy Powers",
+      "profile_path": null
+    },
+    {
+      "character": "Yeah Spider-Man Guy",
+      "id": 1842683,
+      "name": "Omar Capra",
+      "profile_path": "/wgJ2UIBen4XyWwiM8Vkj0J1XdVm.jpg"
+    },
+    {
+      "character": "Dean Crimson",
+      "id": 1842686,
+      "name": "Nitin Nohria",
+      "profile_path": "/k1zHc8z1hyZCVWy9VbOzPZSPvUO.jpg"
+    },
+    {
+      "character": "Stark Tower Technician",
+      "id": 1497467,
+      "name": "Vince Foster",
+      "profile_path": "/5sgQH8EmpAkrXsFRV4RJjP4xODa.jpg"
+    },
+    {
+      "character": "Stark Tower Employee",
+      "id": 1265796,
+      "name": "Brian Schaeffer",
+      "profile_path": "/jY25MFVciYg6pv576QbY9XqalCd.jpg"
+    },
+    {
+      "character": "NYC Pedestrian (uncredited)",
+      "id": 1842691,
+      "name": "Chris Adams",
+      "profile_path": "/xYyqz8opJ3PpB1Nq9uPY2CHK7aO.jpg"
+    },
+    {
+      "character": "Indian Flower Girl (uncredited)",
+      "id": 1842697,
+      "name": "Maiya Boyd",
+      "profile_path": "/ijAc9zlEHat1RYdDs4xmGO5ykYW.jpg"
+    },
+    {
+      "character": "Drama Club Member (uncredited)",
+      "id": 1649779,
+      "name": "Rebeca Donovan",
+      "profile_path": "/ggP7Db56DMvKEFVEHQISeHVE999.jpg"
+    },
+    {
+      "character": "Rabbi on Subway (uncredited)",
+      "id": 1691379,
+      "name": "Elli",
+      "profile_path": "/tlvgW1CCNxEvUOMEQd01zKzfoSr.jpg"
+    },
+    {
+      "character": "Mascot (uncredited)",
+      "id": 1502304,
+      "name": "Nickolas Wolf",
+      "profile_path": "/7j34Du62js5m8cr9hXMOQQXywxH.jpg"
+    },
+    {
+      "character": "Chemistry Student (uncredited)",
+      "id": 1732648,
+      "name": "Jaine Ye",
+      "profile_path": "/5Dqmly7LjZ0svylVfzJpqSBmboZ.jpg"
+    },
+    {
+      "character": "DC Tourist (uncredited)",
+      "id": 2224813,
+      "name": "Gina Cordan",
+      "profile_path": "/xYL2doYw7nLO8eKED9tSZslgMDG.jpg"
+    },
+    {
+      "character": "Skateboarder (uncredited)",
+      "id": 1718174,
+      "name": "Friday Chamberlain",
+      "profile_path": "/12c1FEmzRLQhdwbU7UA19K4EZ7t.jpg"
+    },
+    {
+      "character": "Homecoming Dance Student (uncredited)",
+      "id": 1842698,
+      "name": "Dante Brattelli",
+      "profile_path": null
+    },
+    {
+      "character": "New Yorker (uncredited)",
+      "id": 1842714,
+      "name": "Melissa Kay Glaze",
+      "profile_path": null
+    },
+    {
+      "character": "Avenger's Staff Agent (uncredited)",
+      "id": 1635159,
+      "name": "Donald K. Overstreet",
+      "profile_path": "/nv5cSyQ78PDnZqNG0NCcOHfirRH.jpg"
+    },
+    {
+      "character": "DC News Reporter (uncredited)",
+      "id": 1373622,
+      "name": "Hallie Ricardo",
+      "profile_path": "/qOQFbOXKO56b3yR9atAVpfSd4Qh.jpg"
+    },
+    {
+      "character": "Stark VTOL Pilot (uncredited)",
+      "id": 1463430,
+      "name": "Doug Scroggins III",
+      "profile_path": null
+    },
+    {
+      "character": "NY Pedestrian (uncredited)",
+      "id": 1461314,
+      "name": "Marmee Regine Cosico",
+      "profile_path": null
+    },
+    {
+      "character": "Midtown High Student",
+      "id": 2234460,
+      "name": "Harrison Osterfield",
+      "profile_path": "/yX5auOS06AgMzOXEOs9f0eqiuNg.jpg"
+    },
+    {
+      "character": "High School Student (uncredited)",
+      "id": 1736808,
+      "name": "Nicholas Azarian",
+      "profile_path": "/y3sBSkTDlFnWFBrhR1p2zCY68Zb.jpg"
+    }
+  ],
+  "backdrop_path": "/tTlAA0REGPXSZPBfWyTW9ipIv1I.jpg",
+  "budget": 175000000,
+  "directors": [
+    "Jon Watts"
+  ],
+  "genres": [
+    "Action",
+    "Adventure",
+    "Science Fiction",
+    "Drama"
+  ],
+  "id": 315635,
+  "original_language": "en",
+  "original_title": "Spider-Man: Homecoming",
+  "overview": "Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.",
+  "popularity": 230.264,
+  "poster_path": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+  "production_companies": [
+    {
+      "id": 420,
+      "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+      "name": "Marvel Studios"
+    },
+    {
+      "id": 5,
+      "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+      "name": "Columbia Pictures"
+    },
+    {
+      "id": 84041,
+      "logo_path": "/XmHMPGzdI5c4WGX1YlxU4s2v7T.png",
+      "name": "Pascal Pictures"
+    },
+    {
+      "id": 34034,
+      "logo_path": null,
+      "name": "LStar Capital"
+    },
+    {
+      "id": 34,
+      "logo_path": "/GagSvqWlyPdkFHMfQ3pNq6ix9P.png",
+      "name": "Sony Pictures"
+    }
+  ],
+  "release_date": "2017-07-05",
+  "revenue": 880166924,
+  "runtime": 133,
+  "status": "Released",
+  "title": "Spider-Man: Homecoming",
+  "vote_average": 7.4,
+  "vote_count": 17031
+}
+
+###
+GET http://localhost:3000/api/v1/movie/24428
+
+###
+POST http://localhost:3000/api/v1/actor
+Content-Type: application/json
+
+{
+  "biography": "Thomas \"Tom\" Stanley Holland is an English actor and dancer. He is best known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible. In 2015, Holland was cast as Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in five films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), and Spider-Man: Far From Home (2019).\n\nA graduate of the BRIT School in London, Holland previously appeared on stage in the title role of Billy Elliot the Musical in London's West End in 2008, and his other films include In the Heart of the Sea (2015), and The Current War (2017). In 2017, Holland received the BAFTA Rising Star Award.",
+  "birthday": "1996-06-01",
+  "deathday": null,
+  "gender": "male",
+  "id": 1136406,
+  "movies": [
+    {
+      "id": 315635,
+      "title": "Spider-Man: Homecoming",
+      "poster_path": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg"
+    },
+    {
+      "id": 412656,
+      "title": "Chaos Walking",
+      "poster_path": "/9kg73Mg8WJKlB9Y2SAJzeDKAnuB.jpg"
+    },
+    {
+      "id": 335787,
+      "title": "Uncharted",
+      "poster_path": "/DKqfhnMN6ZFtAripdwQjZ2Dkix.jpg"
+    },
+    {
+      "id": 340442,
+      "title": "Pilgrimage",
+      "poster_path": "/lR5ilnIzIonItxL5mQPAPzXpwPJ.jpg"
+    },
+    {
+      "id": 499932,
+      "title": "The Devil All the Time",
+      "poster_path": "/bVL7LGq528h3KzeNI90HOVbV5uW.jpg"
+    },
+    {
+      "id": 508439,
+      "title": "Onward",
+      "poster_path": "/f4aul3FyD3jv3v4bul1IrkWZvzq.jpg"
+    },
+    {
+      "id": 544401,
+      "title": "Cherry",
+      "poster_path": "/pwDvkDyaHEU9V7cApQhbcSJMG1w.jpg"
+    },
+    {
+      "id": 429617,
+      "title": "Spider-Man: Far From Home",
+      "poster_path": "/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg"
+    },
+    {
+      "id": 634649,
+      "title": "Spider-Man: No Way Home",
+      "poster_path": "/hthXXpjZ4dDa4YVN0siAdzNCDTb.jpg"
+    },
+    {
+      "id": 626329,
+      "title": "A Fan's Guide to Spider-Man: Homecoming",
+      "poster_path": "/aXXkTxJbZJ8R9I3N47ekFiLkM1W.jpg"
+    },
+    {
+      "id": 402446,
+      "title": "Edge of Winter",
+      "poster_path": "/xTZ35mHoJOzTsdvoL66uA4eVvgH.jpg"
+    },
+    {
+      "id": 431693,
+      "title": "Spies in Disguise",
+      "poster_path": "/30YacPAcxpNemhhwX0PVUl9pVA3.jpg"
+    },
+    {
+      "id": 758025,
+      "title": "Peter's To-Do List",
+      "poster_path": "/wf7SV7nSgxjSB9nCcCZGkwWTAdd.jpg"
+    },
+    {
+      "id": 806061,
+      "title": "Beneath a Scarlet Sky",
+      "poster_path": "/loeeZwa4eD2kAz7Uau5AxDNm7pc.jpg"
+    },
+    {
+      "id": 817166,
+      "title": "Onward: Magic Gems",
+      "poster_path": "/25jF11xJg1yQVpKs07ZsYeH4wwt.jpg"
+    },
+    {
+      "id": 80278,
+      "title": "The Impossible",
+      "poster_path": "/k0DLCiDbnYywOHiISALbl2EH2NE.jpg"
+    },
+    {
+      "id": 162215,
+      "title": "How I Live Now",
+      "poster_path": "/gA6AD91r92cHFBrrny8e2xH17EJ.jpg"
+    },
+    {
+      "id": 314095,
+      "title": "The Lost City of Z",
+      "poster_path": "/ik3ebv7J18fs6cHkmu91oxz7EGt.jpg"
+    },
+    {
+      "id": 414017,
+      "title": "Tweet",
+      "poster_path": "/sZ6WoTwv7nXux9KvYJCcOKZjcUA.jpg"
+    },
+    {
+      "id": 411587,
+      "title": "Moments",
+      "poster_path": null
+    },
+    {
+      "id": 210479,
+      "title": "Locke",
+      "poster_path": "/fMotwVtyUr833goyv7EzgAp0bCR.jpg"
+    },
+    {
+      "id": 418879,
+      "title": "The Current War",
+      "poster_path": "/eqTjO8yTaPRSKWj7i6Qnr7R5cls.jpg"
+    },
+    {
+      "id": 205775,
+      "title": "In the Heart of the Sea",
+      "poster_path": "/gLZEULfcS3uhfWDSEclOUgWiN41.jpg"
+    },
+    {
+      "id": 299536,
+      "title": "Avengers: Infinity War",
+      "poster_path": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
+    },
+    {
+      "id": 662151,
+      "title": "Celebrating Marvel's Stan Lee",
+      "poster_path": "/8qlFNCxQQOLfnqwRcHY6WMkb7tF.jpg"
+    },
+    {
+      "id": 299534,
+      "title": "Avengers: Endgame",
+      "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+    },
+    {
+      "id": 448119,
+      "title": "Dolittle",
+      "poster_path": "/uoplwswBDy7gsOyrbGuKyPFoPCs.jpg"
+    },
+    {
+      "id": 271110,
+      "title": "Captain America: Civil War",
+      "poster_path": "/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg"
+    },
+    {
+      "id": 298931,
+      "title": "Billy Elliot: The Musical Live",
+      "poster_path": "/bGRC2gZZe3DJhaoY0qo3cHfS0pt.jpg"
+    },
+    {
+      "id": 580489,
+      "title": "Venom: Let There Be Carnage",
+      "poster_path": "/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg"
+    }
+  ],
+  "name": "Tom Holland",
+  "place_of_birth": "Kingston upon Thames, Surrey, England, UK",
+  "popularity": 44.684,
+  "profile_path": "/ip7aXVH8s6wXv8cY6KI14OZgCI8.jpg"
+}
+
+###
+GET http://localhost:3000/api/v1/actor/3223
