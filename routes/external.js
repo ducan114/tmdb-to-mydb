@@ -15,7 +15,7 @@ router.get('/movie/popular', async (req, res) => {
       `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
     );
 
-    res.json(data);
+    res.json(result.data);
   } catch (err) {
     res.json(err.message);
     console.log(err);
