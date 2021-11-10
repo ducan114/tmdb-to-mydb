@@ -115,9 +115,11 @@ router.get('/actor/:actorId', async (req, res) => {
       gender: ['other', 'female', 'male'][infoData.gender],
       id: infoData.id,
       movies: movieData.map(e => ({
+        backdrop_path: e.backdrop_path,
         id: e.id,
         title: e.title,
-        poster_path: e.poster_path
+        poster_path: e.poster_path,
+        popularity: e.popularity
       })),
       name: infoData.name,
       place_of_birth: infoData.place_of_birth,
