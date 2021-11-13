@@ -1,29 +1,17 @@
 const mongoose = require('mongoose');
+
 const actorSchema = new mongoose.Schema({
   biography: String,
   birthday: String,
   deathday: String,
   gender: {
-    type: String,
-    required: true
-  },
-  id: {
     type: Number,
     required: true
   },
-  movies: [
-    {
-      id: {
-        type: Number,
-        required: true
-      },
-      title: {
-        type: String,
-        required: true
-      },
-      poster_path: String
-    }
-  ],
+  _id: {
+    type: Number,
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -33,11 +21,7 @@ const actorSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  profile_path: String,
-  updatedAt: {
-    type: Date,
-    required: true
-  }
+  profile_path: String
 });
 
 module.exports = new mongoose.model('Actor', actorSchema);

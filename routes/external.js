@@ -11,14 +11,15 @@ router.get('/movie/popular', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    const result = await axios.get(
-      `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+    res.json(
+      await axios
+        .get(
+          `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+        )
+        .then(result => result.data)
     );
-
-    res.json(result.data);
   } catch (err) {
     res.json(err.message);
-    console.log(err);
   }
 });
 
@@ -28,11 +29,13 @@ router.get('/movie/search', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    const result = await axios.get(
-      `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
+    res.json(
+      await axios
+        .get(
+          `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
+        )
+        .then(result => result.data)
     );
-
-    res.json(result.data);
   } catch (err) {
     res.json(err.message);
   }
@@ -43,48 +46,42 @@ router.get('/movie/:movieId', async (req, res) => {
   const movieId = req.params.movieId;
 
   try {
-    const info = await axios.get(
-      `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
-    );
-    const credits = await axios.get(
-      `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
-    );
-
-    const infoData = info.data;
-    const creditData = credits.data;
+    const [info, credits] = await Promise.all([
+      axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`),
+      axios.get(
+        `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+      )
+    ]).then(arr => arr.map(e => e.data));
 
     const processedData = {
-      adult: infoData.adult,
-      actors: creditData.cast.map(e => ({
+      adult: info.adult,
+      actors: credits.cast.map(e => ({
         character: e.character,
-        id: e.id,
+        _id: e.id,
         name: e.name,
-        profile_path: e.profile_path
+        profile_path: e.profile_path,
+        order: e.order
       })),
-      backdrop_path: infoData.backdrop_path,
-      budget: infoData.budget,
-      directors: creditData.crew
+      backdrop_path: info.backdrop_path,
+      budget: info.budget,
+      directors: credits.crew
         .filter(e => e.job === 'Director')
         .map(e => e.name),
-      genres: infoData.genres.map(e => e.name),
-      id: infoData.id,
-      original_language: infoData.original_language,
-      original_title: infoData.original_title,
-      overview: infoData.overview,
-      popularity: infoData.popularity,
-      poster_path: infoData.poster_path,
-      production_companies: infoData.production_companies.map(e => ({
-        id: e.id,
-        logo_path: e.logo_path,
-        name: e.name
-      })),
-      release_date: infoData.release_date,
-      revenue: infoData.revenue,
-      runtime: infoData.runtime,
-      status: infoData.status,
-      title: infoData.title,
-      vote_average: infoData.vote_average,
-      vote_count: infoData.vote_count
+      genres: info.genres.map(e => e.id),
+      _id: info.id,
+      original_language: info.original_language,
+      original_title: info.original_title,
+      overview: info.overview,
+      popularity: info.popularity,
+      poster_path: info.poster_path,
+      release_date: info.release_date,
+      revenue: info.revenue,
+      runtime: info.runtime,
+      status: info.status,
+      tagline: info.tagline,
+      title: info.title,
+      vote_average: info.vote_average,
+      vote_count: info.vote_count
     };
 
     res.json(processedData);
@@ -98,33 +95,34 @@ router.get('/actor/:actorId', async (req, res) => {
   const actorId = req.params.actorId;
 
   try {
-    const info = await axios.get(
-      `${API_URL}person/${actorId}?api_key=${API_KEY}&language=en-US`
-    );
-    const movieCredit = await axios.get(
-      `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}&language=en-US`
-    );
+    const [info, credits] = await Promise.all([
+      axios.get(
+        `${API_URL}person/${actorId}?api_key=${API_KEY}&language=en-US`
+      ),
+      axios.get(
+        `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}&language=en-US`
+      )
+    ]).then(arr => arr.map(e => e.data));
 
-    const infoData = info.data;
-    const movieData = movieCredit.data.cast;
+    const info = info.data;
 
     const processedData = {
-      biography: infoData.biography,
-      birthday: infoData.birthday,
-      deathday: infoData.deathday,
-      gender: ['other', 'female', 'male'][infoData.gender],
-      id: infoData.id,
-      movies: movieData.map(e => ({
+      biography: info.biography,
+      birthday: info.birthday,
+      deathday: info.deathday,
+      gender: info.gender,
+      _id: info.id,
+      movies: credits.cast.map(e => ({
         backdrop_path: e.backdrop_path,
-        id: e.id,
+        _id: e.id,
         title: e.title,
         poster_path: e.poster_path,
         popularity: e.popularity
       })),
-      name: infoData.name,
-      place_of_birth: infoData.place_of_birth,
-      popularity: infoData.popularity,
-      profile_path: infoData.profile_path
+      name: info.name,
+      place_of_birth: info.place_of_birth,
+      popularity: info.popularity,
+      profile_path: info.profile_path
     };
 
     res.json(processedData);
@@ -136,11 +134,11 @@ router.get('/actor/:actorId', async (req, res) => {
 // Get all tmdb's genres.
 router.get('/genres', async (req, res) => {
   try {
-    const result = await axios.get(
-      `${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
+    res.json(
+      await axios
+        .get(`${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`)
+        .then(result => result.data)
     );
-
-    res.json(result.data);
   } catch (err) {
     res.json(err.message);
   }

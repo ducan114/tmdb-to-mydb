@@ -10,22 +10,19 @@ router.get('/search', async (req, res) => {
   const limit = +req.query.limit || 20;
 
   try {
-    const data = await Movie.find({ title: new RegExp(searchTerm, 'i') })
-      .skip((page - 1) * limit)
-      .limit(limit);
-
-    const total = await Movie.countDocuments({
-      title: new RegExp(searchTerm, 'i')
-    });
+    const query = { title: new RegExp(searchTerm, 'i') };
+    const [data, total] = await Promise.all([
+      Movie.find(query)
+        .skip((page - 1) * limit)
+        .limit(limit),
+      Movie.countDocuments(query)
+    ]);
 
     res.json({
       page,
-      results: data.map(e => ({
-        id: e.id,
-        title: e.title,
-        poster_path: e.poster_path
-      })),
-      total_pages: Math.ceil(total / limit)
+      results: data,
+      total_pages: Math.ceil(total / limit),
+      total_results: total
     });
   } catch (err) {
     res.json(err.message);
@@ -37,7 +34,7 @@ router.get('/:movieId', async (req, res) => {
   const movieId = req.params.movieId;
 
   try {
-    res.json(await Movie.find({ id: movieId }));
+    res.json(await Movie.findById(movieId));
   } catch (err) {
     res.json(err.message);
   }
@@ -46,14 +43,9 @@ router.get('/:movieId', async (req, res) => {
 // Create a new movie.
 router.post('/', async (req, res) => {
   try {
-    const movie = new Movie({
-      ...req.body,
-      updatedAt: new Date()
-    });
+    await new Movie(req.body).save();
 
-    await movie.save();
-
-    res.json('New movie added.');
+    res.json(`Inserted the movie with movieId: ${req.body._id}`);
   } catch (err) {
     res.json(err.message);
   }

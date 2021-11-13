@@ -8,7 +8,7 @@ router.get('/:actorId', async (req, res) => {
   const actorId = req.params.actorId;
 
   try {
-    res.json(await Actor.find({ id: actorId }));
+    res.json(await Actor.findById(actorId));
   } catch (err) {
     res.json(err);
   }
@@ -17,14 +17,9 @@ router.get('/:actorId', async (req, res) => {
 // Create a new actor.
 router.post('/', async (req, res) => {
   try {
-    const actor = new Actor({
-      ...req.body,
-      updatedAt: new Date()
-    });
+    await new Actor(req.body).save();
 
-    await actor.save();
-
-    res.json('New actor added.');
+    res.json(`Inserted the actor with actorId: ${req.body._id}`);
   } catch (err) {
     res.json(err);
   }

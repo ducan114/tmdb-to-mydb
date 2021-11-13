@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const movieSchema = new mongoose.Schema({
   adult: {
     type: Boolean,
@@ -10,15 +11,14 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      id: {
+      _id: {
         type: Number,
         required: true
       },
-      name: {
-        type: String,
+      order: {
+        type: Number,
         required: true
-      },
-      profile_path: String
+      }
     }
   ],
   backdrop_path: String,
@@ -27,8 +27,8 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   directors: [String],
-  genres: [String],
-  id: {
+  genres: [Number],
+  _id: {
     type: Number,
     required: true
   },
@@ -46,21 +46,11 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   poster_path: String,
-  production_companies: [
-    {
-      id: {
-        type: Number,
-        required: true
-      },
-      logo_path: String,
-      name: {
-        type: String,
-        required: true
-      }
-    }
-  ],
   release_date: String,
-  revenue: Number,
+  revenue: {
+    type: Number,
+    required: true
+  },
   runtime: {
     type: Number,
     required: true
@@ -73,17 +63,15 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  updatedAt: {
-    type: Date,
-    required: true
-  },
   vote_average: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
   },
   vote_count: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
   }
 });
 
