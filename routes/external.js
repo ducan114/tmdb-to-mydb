@@ -104,8 +104,6 @@ router.get('/actor/:actorId', async (req, res) => {
       )
     ]).then(arr => arr.map(e => e.data));
 
-    const info = info.data;
-
     const processedData = {
       biography: info.biography,
       birthday: info.birthday,
