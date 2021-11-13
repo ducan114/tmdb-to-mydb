@@ -11,13 +11,12 @@ router.get('/movie/popular', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    res.json(
-      await axios
-        .get(
-          `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
-        )
-        .then(result => result.data)
-    );
+    const [id, ...rest] = await axios
+      .get(
+        `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+      )
+      .then(result => result.data);
+    res.json({ _id: id, ...rest });
   } catch (err) {
     res.json(err.message);
   }
@@ -29,13 +28,12 @@ router.get('/movie/search', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    res.json(
-      await axios
-        .get(
-          `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
-        )
-        .then(result => result.data)
-    );
+    const [id, ...rest] = await axios
+      .get(
+        `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
+      )
+      .then(result => result.data);
+    res.json({ _id: id, ...rest });
   } catch (err) {
     res.json(err.message);
   }
