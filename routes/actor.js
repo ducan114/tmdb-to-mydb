@@ -10,7 +10,7 @@ router.get('/:actorId', async (req, res) => {
   try {
     res.json(await Actor.findById(actorId));
   } catch (err) {
-    res.json(err);
+    res.json(err).status(500);
   }
 });
 
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
     res.json(`Inserted the actor with actorId: ${req.body._id}`);
   } catch (err) {
-    res.json(err);
+    res.json(err).status(500);
   }
 });
 

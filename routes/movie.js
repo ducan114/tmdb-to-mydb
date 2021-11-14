@@ -11,6 +11,7 @@ router.get('/search', async (req, res) => {
 
   try {
     const query = { title: new RegExp(searchTerm, 'i') };
+
     const [data, total] = await Promise.all([
       Movie.find(query)
         .skip((page - 1) * limit)
@@ -25,7 +26,7 @@ router.get('/search', async (req, res) => {
       total_results: total
     });
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
@@ -36,7 +37,7 @@ router.get('/:movieId', async (req, res) => {
   try {
     res.json(await Movie.findById(movieId));
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
@@ -47,7 +48,7 @@ router.post('/', async (req, res) => {
 
     res.json(`Inserted the movie with movieId: ${req.body._id}`);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 

@@ -11,14 +11,25 @@ router.get('/movie/popular', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    const [id, ...rest] = await axios
-      .get(
-        `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
-      )
-      .then(result => result.data);
-    res.json({ _id: id, ...rest });
+    const resp = await axios.get(
+      `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+    );
+
+    const data = {
+      ...resp.data,
+      results: resp.data.results.map(e => {
+        const { id, ...rest } = e;
+
+        return {
+          _id: id,
+          ...rest
+        };
+      })
+    };
+
+    res.json(data);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
@@ -28,14 +39,25 @@ router.get('/movie/search', async (req, res) => {
   const page = req.query.page || 1;
 
   try {
-    const [id, ...rest] = await axios
-      .get(
-        `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
-      )
-      .then(result => result.data);
-    res.json({ _id: id, ...rest });
+    const resp = await axios.get(
+      `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}`
+    );
+
+    const data = {
+      ...resp.data,
+      results: resp.data.results.map(e => {
+        const { id, ...rest } = e;
+
+        return {
+          _id: id,
+          ...rest
+        };
+      })
+    };
+
+    res.json(data);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
@@ -44,47 +66,32 @@ router.get('/movie/:movieId', async (req, res) => {
   const movieId = req.params.movieId;
 
   try {
-    const [info, credits] = await Promise.all([
+    const resp = await Promise.all([
       axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`),
       axios.get(
         `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
       )
-    ]).then(arr => arr.map(e => e.data));
+    ]);
 
-    const processedData = {
-      adult: info.adult,
-      actors: credits.cast.map(e => ({
-        character: e.character,
-        _id: e.id,
-        name: e.name,
-        profile_path: e.profile_path,
-        order: e.order
-      })),
-      backdrop_path: info.backdrop_path,
-      budget: info.budget,
+    const [{ id, genres, ...infoRest }, credits] = resp.map(e => e.data);
+
+    const data = {
+      actors: credits.cast.map(e => {
+        const { id, ...rest } = e;
+
+        return { _id: id, ...rest };
+      }),
       directors: credits.crew
         .filter(e => e.job === 'Director')
         .map(e => e.name),
-      genres: info.genres.map(e => e.id),
-      _id: info.id,
-      original_language: info.original_language,
-      original_title: info.original_title,
-      overview: info.overview,
-      popularity: info.popularity,
-      poster_path: info.poster_path,
-      release_date: info.release_date,
-      revenue: info.revenue,
-      runtime: info.runtime,
-      status: info.status,
-      tagline: info.tagline,
-      title: info.title,
-      vote_average: info.vote_average,
-      vote_count: info.vote_count
+      genres: genres.map(e => e.id),
+      _id: id,
+      ...infoRest
     };
 
-    res.json(processedData);
+    res.json(data);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
@@ -93,50 +100,46 @@ router.get('/actor/:actorId', async (req, res) => {
   const actorId = req.params.actorId;
 
   try {
-    const [info, credits] = await Promise.all([
+    const resp = await Promise.all([
       axios.get(
         `${API_URL}person/${actorId}?api_key=${API_KEY}&language=en-US`
       ),
       axios.get(
         `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}&language=en-US`
       )
-    ]).then(arr => arr.map(e => e.data));
+    ]);
 
-    const processedData = {
-      biography: info.biography,
-      birthday: info.birthday,
-      deathday: info.deathday,
-      gender: info.gender,
-      _id: info.id,
-      movies: credits.cast.map(e => ({
-        backdrop_path: e.backdrop_path,
-        _id: e.id,
-        title: e.title,
-        poster_path: e.poster_path,
-        popularity: e.popularity
-      })),
-      name: info.name,
-      place_of_birth: info.place_of_birth,
-      popularity: info.popularity,
-      profile_path: info.profile_path
+    const [{ id, ...infoRest }, credits] = resp.map(e => e.data);
+
+    const data = {
+      _id: id,
+      ...infoRest,
+      movies: credits.cast.map(e => {
+        const { id, ...rest } = e;
+
+        return {
+          _id: id,
+          ...rest
+        };
+      })
     };
 
-    res.json(processedData);
+    res.json(data);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
 // Get all tmdb's genres.
 router.get('/genres', async (req, res) => {
   try {
-    res.json(
-      await axios
-        .get(`${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`)
-        .then(result => result.data)
+    const resp = await axios.get(
+      `${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
     );
+
+    res.json(resp.data);
   } catch (err) {
-    res.json(err.message);
+    res.json(err.message).status(500);
   }
 });
 
