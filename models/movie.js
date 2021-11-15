@@ -63,6 +63,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  tagline: String,
   vote_average: {
     type: Number,
     required: true,

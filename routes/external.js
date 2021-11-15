@@ -62,7 +62,7 @@ router.get('/movie/search', async (req, res) => {
 });
 
 // Get tmdb's single movie info.
-router.get('/movie/:movieId', async (req, res) => {
+router.get('/movie/:movieId/detail', async (req, res) => {
   const movieId = req.params.movieId;
 
   try {
@@ -96,7 +96,7 @@ router.get('/movie/:movieId', async (req, res) => {
 });
 
 // Get tmdb's single actor info.
-router.get('/actor/:actorId', async (req, res) => {
+router.get('/actor/:actorId/detail', async (req, res) => {
   const actorId = req.params.actorId;
 
   try {

@@ -12,6 +12,8 @@ const externalRouter = require('./routes/external');
 const movieRouter = require('./routes/movie');
 const actorRouter = require('./routes/actor');
 const importRouter = require('./routes/import');
+const genreRouter = require('./routes/genre');
+const commentRouter = require('./routes/comment');
 
 // Setup database.
 mongoose.connect(process.env.DB_URL);
@@ -31,5 +33,7 @@ app.use('/api/v1/external', externalRouter);
 app.use('/api/v1/movie', movieRouter);
 app.use('/api/v1/actor', actorRouter);
 app.use('/api/v1/import', importRouter);
+app.use('/api/v1/genre', genreRouter);
+app.use('/api/v1/comment', commentRouter);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
