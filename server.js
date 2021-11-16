@@ -15,17 +15,6 @@ const importRouter = require('./routes/import');
 const genreRouter = require('./routes/genre');
 const commentRouter = require('./routes/comment');
 
-// Setup database.
-mongoose.connect(process.env.DB_URL);
-
-db.once('open', () => {
-  console.log('Connected to database.');
-});
-
-db.on('error', err => {
-  console.error(err);
-});
-
 // Setup server.
 app.use(cors());
 app.use(express.json());
@@ -36,4 +25,15 @@ app.use('/api/v1/import', importRouter);
 app.use('/api/v1/genre', genreRouter);
 app.use('/api/v1/comment', commentRouter);
 
-app.listen(port, () => console.log(`Server is listening on port ${port}.`));
+// Setup database.
+mongoose.connect(process.env.DB_URL);
+
+// Start server after connecting to db.
+db.once('open', () => {
+  console.log('Connected to database.');
+  app.listen(port, () => console.log(`Server is listening on port ${port}.`));
+});
+
+db.on('error', err => {
+  console.error(err);
+});
