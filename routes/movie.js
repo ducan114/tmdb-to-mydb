@@ -9,9 +9,11 @@ router.get('/popular', async (req, res) => {
   const page = +req.query.page || 1;
   const limit = +req.query.limit || 20;
   const genres = req.query.genre;
+
   const query = {};
 
-  genres && (query.genres = { $all: [...genres] });
+  genres &&
+    (query.genres = { $all: [...(Array.isArray(genres) ? genres : [genres])] });
 
   try {
     const [data, total] = await Promise.all([
@@ -45,10 +47,13 @@ router.get('/search', async (req, res) => {
   const page = +req.query.page || 1;
   const limit = +req.query.limit || 20;
   const genres = req.query.genre;
-
   const query = { $text: { $search: searchTerm } };
 
-  genres && (query.genres = { $all: [...genres] });
+  genres &&
+    (query.genres = {
+      $all: [...(Array.isArray(genres) ? genres : [genres])]
+    });
+  console.log(query);
 
   try {
     const [data, total] = await Promise.all([
