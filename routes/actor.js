@@ -8,6 +8,11 @@ const Movie = require('../models/movie');
 router.get('/:actorId', async (req, res) => {
   const actorId = req.params.actorId;
 
+  if (!actorId) {
+    res.status(400).send('You must specify a actor id');
+    return;
+  }
+
   try {
     res.json(await Actor.findById(actorId));
   } catch (err) {
@@ -19,6 +24,11 @@ router.get('/:actorId', async (req, res) => {
 router.get('/:actorId/detail', async (req, res) => {
   const actorId = req.params.actorId;
 
+  if (!actorId) {
+    res.status(400).send('You must specify a actor id');
+    return;
+  }
+
   try {
     const [actor, movies] = await Promise.all([
       Actor.findById(actorId),
@@ -29,39 +39,6 @@ router.get('/:actorId/detail', async (req, res) => {
       ...actor._doc,
       movies
     });
-  } catch (err) {
-    res.json(err).status(500);
-  }
-});
-
-// Create a new actor.
-router.post('/', async (req, res) => {
-  const {
-    _id,
-    gender,
-    biography,
-    birthday,
-    deathday,
-    name,
-    place_of_birth,
-    popularity,
-    profile_path
-  } = req.body;
-
-  try {
-    await new Actor({
-      _id,
-      gender,
-      biography,
-      birthday,
-      deathday,
-      name,
-      place_of_birth,
-      popularity,
-      profile_path
-    }).save();
-
-    res.json(`Inserted the actor with actorId: ${req.body._id}`);
   } catch (err) {
     res.json(err).status(500);
   }

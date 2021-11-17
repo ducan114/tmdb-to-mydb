@@ -7,10 +7,7 @@ const movieSchema = new mongoose.Schema({
   },
   actors: [
     {
-      character: {
-        type: String,
-        required: true
-      },
+      character: String,
       _id: {
         type: Number,
         required: true
@@ -51,10 +48,7 @@ const movieSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  runtime: {
-    type: Number,
-    required: true
-  },
+  runtime: Number,
   status: {
     type: String,
     required: true
