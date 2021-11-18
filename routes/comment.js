@@ -14,7 +14,9 @@ router.get('/:movieId', async (req, res) => {
   }
 
   try {
-    const comments = await Comment.find({ movie_id: movieId });
+    const comments = await Comment.find({ movie_id: movieId }).sort({
+      createdAt: -1
+    });
     const profiles = {};
 
     const uids = Array.from(new Set(comments.map(comment => comment.uid)));
