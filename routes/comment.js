@@ -6,7 +6,7 @@ const router = express.Router();
 const Comment = require('../models/comment');
 
 router.get('/:movieId', async (req, res) => {
-  const movieId = req.params.movieId;
+  let movieId = req.params.movieId;
 
   if (!movieId) return res.status(400).send('You must specify a movie id');
 
@@ -44,7 +44,8 @@ router.get('/:movieId', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { uid, movie_id, content } = req.body;
+  const { uid, content } = req.body;
+  let { movie_id } = req.body;
 
   if (!movie_id) return res.status(400).send('You must specify a movie id');
 

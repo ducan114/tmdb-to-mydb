@@ -12,7 +12,7 @@ router.get('/:actorId', async (req, res) => {
 
   actorId = +actorId;
 
-  if (!actorId) return res.status(400).send('Actor not found');
+  if (!actorId) return res.status(400).send('Actor id must be a number');
 
   try {
     res.json(await Actor.findById(actorId));
@@ -23,13 +23,13 @@ router.get('/:actorId', async (req, res) => {
 
 // Get a single actor detail.
 router.get('/:actorId/detail', async (req, res) => {
-  const actorId = req.params.actorId;
+  let actorId = req.params.actorId;
 
   if (!actorId) return res.status(400).send('You must specify a actor id');
 
   actorId = +actorId;
 
-  if (!actorId) return res.status(400).send('Actor not found');
+  if (!actorId) return res.status(400).send('Actor is must be a number');
 
   try {
     const [actor, movies] = await Promise.all([
