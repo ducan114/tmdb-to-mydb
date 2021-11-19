@@ -8,10 +8,11 @@ const Comment = require('../models/comment');
 router.get('/:movieId', async (req, res) => {
   const movieId = req.params.movieId;
 
-  if (!movieId) {
-    res.status(400).send('You must specify a movie id');
-    return;
-  }
+  if (!movieId) return res.status(400).send('You must specify a movie id');
+
+  movieId = +movieId;
+
+  if (!movieId) return res.status(400).send('Movie id must be a number');
 
   try {
     const comments = await Comment.find({ movie_id: movieId }).sort({
@@ -44,6 +45,12 @@ router.get('/:movieId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { uid, movie_id, content } = req.body;
+
+  if (!movie_id) return res.status(400).send('You must specify a movie id');
+
+  movie_id = +movie_id;
+
+  if (!movie_id) return res.status(400).send('Movie id must be a number');
 
   try {
     await new Comment({ uid, movie_id, content, createdAt: new Date() }).save();

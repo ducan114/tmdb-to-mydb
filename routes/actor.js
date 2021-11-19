@@ -6,12 +6,13 @@ const Movie = require('../models/movie');
 
 // Get a single actor.
 router.get('/:actorId', async (req, res) => {
-  const actorId = req.params.actorId;
+  let actorId = req.params.actorId;
 
-  if (!actorId) {
-    res.status(400).send('You must specify a actor id');
-    return;
-  }
+  if (!actorId) return res.status(400).send('You must specify a actor id');
+
+  actorId = +actorId;
+
+  if (!actorId) return res.status(400).send('Actor not found');
 
   try {
     res.json(await Actor.findById(actorId));
@@ -24,10 +25,11 @@ router.get('/:actorId', async (req, res) => {
 router.get('/:actorId/detail', async (req, res) => {
   const actorId = req.params.actorId;
 
-  if (!actorId) {
-    res.status(400).send('You must specify a actor id');
-    return;
-  }
+  if (!actorId) return res.status(400).send('You must specify a actor id');
+
+  actorId = +actorId;
+
+  if (!actorId) return res.status(400).send('Actor not found');
 
   try {
     const [actor, movies] = await Promise.all([

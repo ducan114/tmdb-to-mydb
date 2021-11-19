@@ -79,10 +79,11 @@ router.get('/search', async (req, res) => {
 router.get('/:movieId', async (req, res) => {
   const movieId = req.params.movieId;
 
-  if (!movieId) {
-    res.status(400).send('You must specify a movie id');
-    return;
-  }
+  if (!movieId) return res.status(400).send('You must specify a movie id');
+
+  movieId = +movieId;
+
+  if (!movieId) return res.status(400).send('Movie not found');
 
   try {
     res.json(await Movie.findById(movieId));
@@ -95,10 +96,11 @@ router.get('/:movieId', async (req, res) => {
 router.get('/:movieId/detail', async (req, res) => {
   const movieId = req.params.movieId;
 
-  if (!movieId) {
-    res.status(400).send('You must specify a movie id');
-    return;
-  }
+  if (!movieId) return res.status(400).send('You must specify a movie id');
+
+  movieId = +movieId;
+
+  if (!movieId) return res.status(400).send('Movie not found');
 
   try {
     const { _doc: movie } = await Movie.findById(movieId);
