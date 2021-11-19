@@ -38,7 +38,7 @@ router.get('/:movieId', async (req, res) => {
       profiles
     });
   } catch (err) {
-    res.json(err.message).status(500);
+    res.status(500).json(err.message);
   }
 });
 
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 
     res.json('New comment added');
   } catch (err) {
-    res.json(err.message).status(500);
+    res.status(500).json(err.message);
   }
 });
 

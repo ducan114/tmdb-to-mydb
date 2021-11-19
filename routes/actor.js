@@ -16,7 +16,7 @@ router.get('/:actorId', async (req, res) => {
   try {
     res.json(await Actor.findById(actorId));
   } catch (err) {
-    res.json(err).status(500);
+    res.status(500).json(err);
   }
 });
 
@@ -40,7 +40,7 @@ router.get('/:actorId/detail', async (req, res) => {
       movies
     });
   } catch (err) {
-    res.json(err).status(500);
+    res.status(500).json(err);
   }
 });
 
